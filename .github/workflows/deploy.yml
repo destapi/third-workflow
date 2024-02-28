@@ -5,7 +5,7 @@ on:
       - main
       - dev
 env:
-  MONGODB_DB_NAME: gha-mongo
+  MONGODB_APP_NAME: gha-demo
 jobs:
   test:
     env: 
@@ -29,7 +29,8 @@ jobs:
       - name: Run tests
         run: npm test
       - name: Output information
-        run: echo "Mongo DB username - ${{ env.MONGODB_USERNAME }}"
+        run: |
+          echo "Mongo DB username: ${{ env.MONGODB_USERNAME }}"
   deploy:
     needs: test
     runs-on: ubuntu-latest
